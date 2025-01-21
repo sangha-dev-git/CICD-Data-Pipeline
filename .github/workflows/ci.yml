@@ -4,27 +4,42 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - name: Check out code
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: '3.8'  # Set the version of Python you are using
+        
+    - name: Check Python version
+      run: |
+        python --version  # This will print the Python version on the GitHub Actions server
+
+    - name: Set up AWS credentials (if using AWS)
+      run: |
+        echo "[default]" > ~/.aws/credentials
+        echo "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+        echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
 
     - name: Install dependencies
       run: |
+        echo "Upgrading pip..."
         python -m pip install --upgrade pip
+        echo "Installing dependencies..."
         pip install -r requirements.txt
+        echo "Dependencies installed."
 
     - name: Run tests
-      run: python -m unittest discover tests
+      run: |
+        pytest  # Or any other testing tool you are using
+
+    - name: Deploy (if applicable)
+      run: |
+        # Add your deployment steps here if applicable
