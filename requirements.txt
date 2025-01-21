@@ -1,1 +1,2 @@
+pytest==7.0.0  # or the version you prefer
 boto3
