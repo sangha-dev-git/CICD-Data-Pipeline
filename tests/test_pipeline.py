@@ -10,7 +10,7 @@ print('cwd : ' +str(cwd))
 
 parent_dir = os.path.dirname(cwd)
 
-abs_pipeline_path = str(parent_dir)+ '\scripts' + '\pipeline.py'
+abs_pipeline_path = str(parent_dir)+ '/scripts' + '/pipeline.py'
 print(abs_pipeline_path)
 
 
