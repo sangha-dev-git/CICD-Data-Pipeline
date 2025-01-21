@@ -37,7 +37,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest  # Or any other testing tool you are using
+        PYTHONPATH=$(pwd)/scripts pytest  # Or any other testing tool you are using
 
     - name: Deploy (if applicable)
       run: |
