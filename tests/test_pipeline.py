@@ -9,7 +9,8 @@ cwd = os.getcwd()
 print('cwd : ' +str(cwd))
 
 parent_dir = os.path.dirname(cwd)
-
+print('parent dir: '+ str(parent_dir))
+print('chcek if we are table to find the parent dir of cwd')
 abs_pipeline_path = str(parent_dir)+ '/scripts' + '/pipeline.py'
 print(abs_pipeline_path)
 
