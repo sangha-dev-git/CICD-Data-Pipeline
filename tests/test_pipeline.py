@@ -24,20 +24,23 @@ my_module = module
 
 
 
+import pytest
+# from scripts.pipeline import process_data  # Import the function to be tested
 
 
-# my_module
-import unittest
-# from scripts.pipeline import process_data
+@pytest.fixture
+def sample_input():
+    """Fixture to provide sample input data."""
+    return {"key1": "value1", "key2": "value2"}
 
-# from .scripts.pipeline import process_data
 
-class TestPipeline(unittest.TestCase):
-    def test_process_data(self):
-        # Add your test logic here
-        result = my_module.process_data() 
-        print("Testing data processing...")
-        self.assertTrue(True)
+@pytest.fixture
+def expected_output():
+    """Fixture to provide the expected output data."""
+    return {"key1": "VALUE1", "key2": "VALUE2"}
 
-if __name__ == "__main__":
-    unittest.main()
+
+def test_process_data(sample_input, expected_output):
+    """Test the process_data function."""
+    result = my_module.process_data(sample_input)
+    assert result == expected_output, f"Expected {expected_output}, but got {result}"
