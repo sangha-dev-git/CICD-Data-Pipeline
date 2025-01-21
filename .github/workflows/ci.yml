@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Check sys.path
+      run: |
+        python -c "import sys; print(sys.path)"
+
     - name: Check out code
       uses: actions/checkout@v2
 
