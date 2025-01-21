@@ -30,7 +30,7 @@ my_module = module
 import unittest
 # from scripts.pipeline import process_data
 
-from .scripts.pipeline import process_data
+# from .scripts.pipeline import process_data
 
 class TestPipeline(unittest.TestCase):
     def test_process_data(self):
